@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Course</title>
+
+        <%- include("./styles.ejs"); %>
+    </head>
+
+    <body>
+        <div class="wrapper container">
+            <header>
+                <h1>Module edit</h1>
+            </header>
+            <main>
+                <div class="">
+                    <% if (locals.module) { %>
+
+
+                        <form method="POST" action="/module/update/<%= id %>" class="form" id="form">
+                            <div class="form-block">
+                                <label for="module-name">Module name:</label>
+                                <input type="text" id="module-name" name="module" value="<%= module.module %>"
+                                    placeholder="Type here...">
+                            </div>
+                            <div class="form-block">
+                                <label for="module-name">Leader name:</label>
+                                <input type="text" id="module-name" name="leader" value="<%= module.leader %>"
+                                    placeholder="Type here...">
+                            </div>
+                            <div class="form-block">
+                                <label for="description">Description:</label>
+                                <input name="description" id="description" value="<%= module.description %>"
+                                    placeholder="Type here..."></input>
+                            </div>
+                            <div class="form-block">
+                                <label for="ranking">Ranking:</label>
+                                <input type="text" id="ranking" name="rank" value="<%= module.rank %>">
+                            </div>
+                            <button class="form-submit" type="submit">Enter</button>
+                        </form>
+
+                        <% } else { %>
+
+
+                            <h3><a href="/">Back to home page</a></h3>
+                            <h2>404 not found</h2>
+
+
+                            <% } %>
+                </div>
+            </main>
+        </div>
+    </body>
+
+</html>

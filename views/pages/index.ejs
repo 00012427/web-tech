@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Course</title>
+
+        <%- include("./styles.ejs"); %>
+    </head>
+
+    <body>
+        <div class="wrapper container">
+            <header>
+                <h1>University Modules app</h1>
+            </header>
+            <main>
+                <div class="">
+                    <form method="POST" action="/module/create/" class="form" id="form">
+                        <div class="form-block">
+                            <label for="module-name">Module name:</label>
+                            <input type="text" id="module-name" name="module" placeholder="Type here...">
+                        </div>
+                        <div class="form-block">
+                            <label for="module-name">Leader name:</label>
+                            <input type="text" id="module-name" name="leader" placeholder="Type here...">
+                        </div>
+                        <div class="form-block">
+                            <label for="description">Description:</label>
+                            <input type="text" name="description">
+                            <!-- <textarea name="description" id="description" placeholder="Type here..."></textarea> -->
+                        </div>
+                        <div class="form-block">
+                            <label for="ranking">Ranking:</label>
+                            <input type="text" id="ranking" name="rank">
+                        </div>
+                        <button class="form-submit" type="submit">Enter</button>
+                    </form>
+
+                    <h2 class="cards-title">Available modules</h2>
+
+                    <div class="cards">
+                        <% modules.forEach(function(m) { %>
+                            <div class="card">
+                                <h4>
+                                    <%= m.module %>
+                                </h4>
+                                <hr>
+                                <p>
+                                    <%= m.description %>
+                                </p>
+                                <div>
+                                    <h5>
+                                        Ranking: <%= m.rank %>
+                                    </h5>
+                                </div>
+                                <h5 class="card-leader_name">
+                                    <%= m.leader %>
+                                </h5>
+
+                                <hr>
+
+                                <div class="card-actions">
+                                    <a href="/module/<%= m.id %>" class="card-btn">Edit</a>
+                                    <a href="/module/delete/<%= m.id %>" class="card-btn">Remove</a>
+                                </div>
+                            </div>
+
+                            <% }); %>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+
+</html>
