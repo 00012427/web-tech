@@ -62,8 +62,7 @@ app.get('/module/:id', function (req, res) {
 
 // POST method
 app.post('/module/create/', (req, res) => {
-    console.log('req:', req.body)
-
+  
     fs.readFile(dbPath('dbModules'), (err, data) => {
         if (err) res.render('modules', { success: false })
 
